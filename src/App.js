@@ -1,4 +1,3 @@
-import './App.css'
 import {
   BrowserRouter as Router,
   Routes,
@@ -17,7 +16,7 @@ export default function App() {
             <div id="app">
                 <Header />
                 <Routes>
-                    <Route path="/index" element={<SearchPage />} />
+                    <Route path="/" element={<SearchPage />} />
                     <Route path="/watchlist" element={<WatchlistPage />} />
                 </Routes>
             </div>

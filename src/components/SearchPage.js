@@ -1,6 +1,7 @@
 import React from "react"
 import SearchBar from "./SearchBar"
 import SearchResult from "./SearchResult"
+import FilmReelIcon from "../images/film-reel-icon.png"
 
 export default function SearchPage() {
     const baseURL = "https://www.omdbapi.com/?apikey=ff7ef8c4&"
@@ -13,9 +14,19 @@ export default function SearchPage() {
                 {...movie}
             />
     )) : []
+
+    const isSearchPageEmpty = (!searchResultsElems.length || !searchClicked)
+    const stylesEmpty = {
+        height: "calc(100% - 30vw - 1.1875rem)",
+        bottom: "45%",
+        transform: "translateY(40%)"
+    }
+    const stylesNotEmpty = {
+        paddingTop: "1.1875rem"
+    }
     
     async function handleSearchBtnClick(e) {
-        event.preventDefault()
+        e.preventDefault()
         
         const res = await fetch(`${baseURL}s=${search}`)
         const searchResultsJson = await res.json()
@@ -52,13 +63,17 @@ export default function SearchPage() {
                 handleClick={e => handleSearchBtnClick(e)}
                 handleChange={e => handleChange(e)} 
             />
-            <main id="search-page" className="flex-center content-fit-width">
+            <main
+                id="search-page"
+                className="flex-center content-fit-width"
+                style={isSearchPageEmpty ? stylesEmpty : stylesNotEmpty}
+            >
                 {searchResultsElems.length ? 
                     searchResultsElems
                     : searchClicked ?
                     <p className="empty-page-text flex-center">Unable to find what you're looking for. Please try another search.</p>
                     : <div id="search-page--start-exploring" className="flex-center">
-                        <img src="images/film-reel-icon.png" />
+                        <img src={FilmReelIcon} alt=""/>
                         <p className="empty-page-text">Start exploring</p>
                     </div>
                 }

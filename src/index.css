@@ -154,13 +154,14 @@ header > .content-fit-width {
 
 #search-page {
   /* 100% - header height - 1/2 of search bar height */
-  height: calc(100% - 30vw - 19px);
+  /* height: calc(100% - 30vw - 1.1875rem); */
   flex-direction: column;
   margin: 0 auto;
   position: absolute;
-  bottom: 45%;
-  transform: translateY(40%);
-}
+  padding-top: 1.1875rem;
+  /* bottom: 45%;
+  transform: translateY(40%); */
+} 
 
 #search-page--start-exploring {
   flex-direction: column;
