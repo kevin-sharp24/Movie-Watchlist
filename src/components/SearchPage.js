@@ -9,13 +9,14 @@ export default function SearchPage() {
     const [searchClicked, setSearchClicked] = React.useState(false)
     const [searchResults, setSearchResults] = React.useState([])
     const searchResultsElems = searchResults.length > 0 ? searchResults.map(movie => (
-            <SearchResult
-                key={movie.key}
-                {...movie}
-            />
+        <SearchResult
+            id={movie.key}
+            {...movie}
+        />
     )) : []
 
-    const isSearchPageEmpty = (!searchResultsElems.length || !searchClicked)
+    const isSearchPageEmpty = !searchResultsElems.length
+
     const stylesEmpty = {
         height: "calc(100% - 30vw - 1.1875rem)",
         bottom: "45%",
@@ -68,7 +69,7 @@ export default function SearchPage() {
                 className="flex-center content-fit-width"
                 style={isSearchPageEmpty ? stylesEmpty : stylesNotEmpty}
             >
-                {searchResultsElems.length ? 
+                {!isSearchPageEmpty ? 
                     searchResultsElems
                     : searchClicked ?
                     <p className="empty-page-text flex-center">Unable to find what you're looking for. Please try another search.</p>
