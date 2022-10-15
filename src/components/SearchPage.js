@@ -1,13 +1,13 @@
-import React from "react"
+import React, {useState, useEffect} from "react"
 import SearchBar from "./SearchBar"
 import SearchResult from "./SearchResult"
 import FilmReelIcon from "../images/film-reel-icon.png"
 
 export default function SearchPage({handleWatchlistBtnClick, setPage}) {
     const baseURL = "https://www.omdbapi.com/?apikey=ff7ef8c4&"
-    const [search, setSearch] = React.useState("")
-    const [searchClicked, setSearchClicked] = React.useState(false)
-    const [searchResults, setSearchResults] = React.useState([])
+    const [search, setSearch] = useState("")
+    const [searchClicked, setSearchClicked] = useState(false)
+    const [searchResults, setSearchResults] = useState([])
     const searchResultsElems = searchResults.map(movie => (
         <SearchResult
             handleClick={handleWatchlistBtnClick}
@@ -26,7 +26,7 @@ export default function SearchPage({handleWatchlistBtnClick, setPage}) {
         paddingTop: "1.1875rem"
     }
 
-    React.useEffect(() => {
+    useEffect(() => {
         setPage()
     }, [setPage])
     

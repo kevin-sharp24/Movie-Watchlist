@@ -1,4 +1,4 @@
-import React from "react"
+import React, {useState, useEffect} from "react"
 import {
   BrowserRouter as Router,
   Routes,
@@ -8,33 +8,56 @@ import {
 import Header from "./components/Header"
 import SearchPage from "./components/SearchPage"
 import WatchlistPage from "./components/WatchlistPage"
+import SearchResult from "./components/SearchResult"
 
 
 export default function App() {
-    const [onSearchPage, setOnSearchPage] = React.useState(true)
-    const [watchlist, setWatchlist] = React.useState(
+    const [onSearchPage, setOnSearchPage] = useState(true)
+    const [watchlist, setWatchlist] = useState(
         localStorage.getItem("myWatchlist") ? 
         JSON.parse(localStorage.getItem("myWatchlist")) :
         {}
     )
-    localStorage.setItem("myWatchlist", JSON.stringify(watchlist))
-    //localStorage.removeItem("myWatchlist")
+    const [watchlistElems, setWatchlistElems] = useState([])
 
-    function addItemToWatchlist(item) {
+    useEffect(() => {
+        localStorage.setItem("myWatchlist", JSON.stringify(watchlist))
+        setWatchlistElems(() => {
+            const watchlistObj = JSON.parse(localStorage.getItem("myWatchlist"))
+            
+            let elems = []
+            for (const key in watchlistObj) {
+                elems.push(
+                    <SearchResult
+                        handleClick={removeItemFromWatchlist}
+                        key={key}
+                        {...watchlistObj[key]}
+                    />
+                )
+            }
+            return elems
+        })
+    }, [watchlist])
+
+    console.log("app rendered")
+
+    function setPage(newValue) {
+        setOnSearchPage(newValue)
+    }
+
+    function addItemToWatchlist(e, item) {
         setWatchlist(prevWatchlist => {
             return {...prevWatchlist, [item.id]: item}
         })
     }
 
-    function removeItemFromWatchlist(item) {
+    function removeItemFromWatchlist(e, item) {      
         setWatchlist(prevWatchlist => {
-            delete prevWatchlist[item.id]
-            return prevWatchlist
+            delete prevWatchlist[item.id]            
+            const newWatchlist = {...prevWatchlist}
+            localStorage.setItem("myWatchlist", JSON.stringify(newWatchlist))
+            return newWatchlist
         })
-    }
-
-    function setPage(newValue) {
-        setOnSearchPage(newValue)
     }
 
     return (
@@ -54,9 +77,9 @@ export default function App() {
                     <Route 
                         path="/watchlist" 
                         element={
-                            <WatchlistPage 
+                            <WatchlistPage
                                 setPage={() => setPage(false)}
-                                handleClick={removeItemFromWatchlist}
+                                watchlistElems={watchlistElems}
                             />
                         } 
                     />

@@ -11,7 +11,8 @@ export default function SearchBar({handleClick, handleChange}) {
             />
             <button 
                 className="border font-style" 
-                onClick={handleClick}>Search
+                onClick={handleClick}>
+                    Search
             </button>
         </form>
     )

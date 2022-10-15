@@ -1,11 +1,10 @@
-import React from "react"
+import React, {useEffect} from "react"
 import {Link} from "react-router-dom"
-import SearchResult from "./SearchResult"
 import PlusIcon from "../images/plus-icon.png"
 
-export default function WatchlistPage({handleClick, setPage}) {
+export default function WatchlistPage({setPage, watchlistElems}) {
 
-    React.useEffect(() => {
+    useEffect(() => {
         setPage()
     }, [setPage])
 
@@ -13,23 +12,10 @@ export default function WatchlistPage({handleClick, setPage}) {
         height: "calc(100% - 30vw)"
     }
 
-    let watchlistElems = []
-    function getWatchlistItems() {
-    
-        const watchlistObj = JSON.parse(localStorage.getItem("myWatchlist"))
-
-        for (const key in watchlistObj) {
-            watchlistElems.push(
-                <SearchResult
-                    handleClick={handleClick}
-                    key={key}
-                    {...watchlistObj[key]}
-                />
-            )
-        }
-    }
-    getWatchlistItems()
     const isWatchlistEmpty = watchlistElems.length === 0
+
+    console.log("watchlist page rendered")
+    console.log(watchlistElems)
 
     return (
         <main 

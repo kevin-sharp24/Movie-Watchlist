@@ -26,7 +26,7 @@ export default function SearchResult({id, Title, Poster, Ratings, Runtime, Genre
                 <div className="search-result--movie-details-mid-row">
                     <p className="search-result--runtime">{Runtime}</p>
                     <p className="search-result--genre">{Genre}</p>
-                    <div className="btn-add-to-watchlist" onClick={() => handleClick(watchlistItemObj)}>
+                    <div className="btn-add-to-watchlist" onClick={(e) => handleClick(e, watchlistItemObj)}>
                         <img src={PlusIcon} alt="click to add this movie to your watchlist"/>
                         <p>Watchlist</p>
                     </div>
