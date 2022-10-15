@@ -29,6 +29,7 @@ export default function App() {
             for (const key in watchlistObj) {
                 elems.push(
                     <SearchResult
+                        onSearchPage={false}
                         handleClick={removeItemFromWatchlist}
                         key={key}
                         {...watchlistObj[key]}
@@ -45,13 +46,13 @@ export default function App() {
         setOnSearchPage(newValue)
     }
 
-    function addItemToWatchlist(e, item) {
+    function addItemToWatchlist(item) {
         setWatchlist(prevWatchlist => {
             return {...prevWatchlist, [item.id]: item}
         })
     }
 
-    function removeItemFromWatchlist(e, item) {      
+    function removeItemFromWatchlist(item) {      
         setWatchlist(prevWatchlist => {
             delete prevWatchlist[item.id]            
             const newWatchlist = {...prevWatchlist}

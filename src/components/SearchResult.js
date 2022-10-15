@@ -1,8 +1,9 @@
 import React from "react"
 import PlusIcon from "../images/plus-icon.png"
+import MinusIcon from "../images/minus-icon.png"
 import StarIcon from "../images/star-icon.png"
 
-export default function SearchResult({id, Title, Poster, Ratings, Runtime, Genre, Plot, handleClick}) {
+export default function SearchResult({id, Title, Poster, Ratings, Runtime, Genre, Plot, handleClick, onSearchPage}) {
 
     const watchlistItemObj = {
         "id": id,
@@ -26,10 +27,17 @@ export default function SearchResult({id, Title, Poster, Ratings, Runtime, Genre
                 <div className="search-result--movie-details-mid-row">
                     <p className="search-result--runtime">{Runtime}</p>
                     <p className="search-result--genre">{Genre}</p>
-                    <div className="btn-add-to-watchlist" onClick={(e) => handleClick(e, watchlistItemObj)}>
-                        <img src={PlusIcon} alt="click to add this movie to your watchlist"/>
-                        <p>Watchlist</p>
-                    </div>
+                    { onSearchPage ? 
+                        <div className="btn-add-or-remove-item" onClick={() => handleClick(watchlistItemObj)}>
+                            <img src={PlusIcon} alt="click to add this movie to your watchlist"/>
+                            <p>Watchlist</p>
+                        </div> :
+                        <div className="btn-add-or-remove-item" onClick={() => handleClick(watchlistItemObj)}>
+                            <img src={MinusIcon} alt="click to remove this movie from your watchlist"/>
+                            <p>Remove</p>
+                        </div>
+                    }
+                    
                 </div>
                 <p className="search-result--summary">{Plot}</p>
             </div>

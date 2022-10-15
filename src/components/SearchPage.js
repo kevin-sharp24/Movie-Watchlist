@@ -13,6 +13,7 @@ export default function SearchPage({handleWatchlistBtnClick, setPage}) {
             handleClick={handleWatchlistBtnClick}
             id={movie.key}
             {...movie}
+            onSearchPage={true}
         />
     ))
 

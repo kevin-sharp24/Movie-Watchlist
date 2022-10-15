@@ -225,7 +225,7 @@ header > .content-fit-width {
   margin-bottom: 0.5em;    
 }
 
-.btn-add-to-watchlist {
+.btn-add-or-remove-item {
   display: flex;
   align-items: center;
   gap: 0.4em;
@@ -234,7 +234,7 @@ header > .content-fit-width {
   border-radius: 4px;
 }
 
-.btn-add-to-watchlist:hover {
+.btn-add-or-remove-item:hover {
   background-color: #E5E7EB;
 }
 
