@@ -36,6 +36,17 @@ h1 {
   text-decoration: none;
 }
 
+#watchlist-page--search-page-cta {
+  color: black;
+  font-size: 1.125rem;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  margin-top: 1em;
+  gap: 0.5em;
+}
+
+#watchlist-page--search-page-cta:hover,
 #header--nav-link:hover {
   text-decoration: underline;
 }
@@ -225,6 +236,24 @@ header > .content-fit-width {
 
 .btn-add-to-watchlist:hover {
   background-color: #E5E7EB;
+}
+
+.search-result:last-child {
+  border-bottom: none;
+}
+
+
+/* WATCHLIST */
+
+#watchlist-page {
+  flex-direction: column;
+  /* height: calc(100% - 30vw); */
+  margin: 0 auto;
+}
+
+#empty-watchlist {
+  text-align: center;
+  gap: 15rem;
 }
 
 

@@ -3,20 +3,20 @@ import SearchBar from "./SearchBar"
 import SearchResult from "./SearchResult"
 import FilmReelIcon from "../images/film-reel-icon.png"
 
-export default function SearchPage() {
+export default function SearchPage({handleWatchlistBtnClick, setPage}) {
     const baseURL = "https://www.omdbapi.com/?apikey=ff7ef8c4&"
     const [search, setSearch] = React.useState("")
     const [searchClicked, setSearchClicked] = React.useState(false)
     const [searchResults, setSearchResults] = React.useState([])
-    const searchResultsElems = searchResults.length > 0 ? searchResults.map(movie => (
+    const searchResultsElems = searchResults.map(movie => (
         <SearchResult
+            handleClick={handleWatchlistBtnClick}
             id={movie.key}
             {...movie}
         />
-    )) : []
+    ))
 
     const isSearchPageEmpty = !searchResultsElems.length
-
     const stylesEmpty = {
         height: "calc(100% - 30vw - 1.1875rem)",
         bottom: "45%",
@@ -25,6 +25,10 @@ export default function SearchPage() {
     const stylesNotEmpty = {
         paddingTop: "1.1875rem"
     }
+
+    React.useEffect(() => {
+        setPage()
+    }, [setPage])
     
     async function handleSearchBtnClick(e) {
         e.preventDefault()
@@ -34,7 +38,6 @@ export default function SearchPage() {
         
         if (searchResultsJson.Search) {
             const movieIDs = searchResultsJson.Search.map(result => result.imdbID)
-            console.log(movieIDs)
             
             const promises = []
             for (const id in movieIDs) {
@@ -61,7 +64,7 @@ export default function SearchPage() {
     return (
         <div id="search-page-wrapper">
             <SearchBar 
-                handleClick={e => handleSearchBtnClick(e)}
+                handleClick={handleSearchBtnClick}
                 handleChange={e => handleChange(e)} 
             />
             <main
