@@ -9,7 +9,7 @@ export default function WatchlistPage({setPage, watchlistElems}) {
     }, [setPage])
 
     const styles = {
-        height: "calc(100% - 30vw)"
+        height: window.matchMedia("(max-width: 1000px)").matches ? "calc(100% - 30vw)" : "calc(100% - 300px)"
     }
 
     const isWatchlistEmpty = watchlistElems.length === 0

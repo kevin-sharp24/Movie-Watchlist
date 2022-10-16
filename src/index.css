@@ -16,6 +16,7 @@ p {
   margin: 0;
 }
 
+
 /* TYPOGRAPHY */
 
 body {   
@@ -75,6 +76,28 @@ h1 {
   text-align: center;
 }
 
+@media(max-width: 550px) {
+  h1 {
+    font-size: 2.125rem;
+  }
+
+  #header--nav-link {
+    font-size: 0.75rem;
+  }
+  
+  .search-result--title {
+    font-size: 1rem;
+  }
+
+  .search-result--movie-details-mid-row {
+    font-size: 0.65rem;
+  }
+
+  .search-result--summary {
+    font-size: 0.8rem;
+  }
+}
+
 /* HEADER */
 
 header {
@@ -98,10 +121,12 @@ header > .content-fit-width {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  max-width: 650px;
 }
 
 
 /* SEARCH PAGE WRAPPER */
+
 #search-page-wrapper {
   display: flex;
   flex-direction: column;
@@ -115,12 +140,19 @@ header > .content-fit-width {
   position: relative;
 }
 
+@media(min-width: 1000px) {
+  #search-page-wrapper {
+    height: calc(100% - 300px);
+  }
+}
+
 
 /* SEARCH BAR */
 
 #search-bar {
   display: flex;
   width: 84%;
+  max-width: 800px;
   height: 2.375rem;
   margin: -1.1875rem auto 0;
   
@@ -170,6 +202,7 @@ header > .content-fit-width {
   font-family: inherit;
 }
 
+
 /* SEARCH PAGE */
 
 #search-page {
@@ -190,12 +223,15 @@ header > .content-fit-width {
 
 
 /* INDIVIDUAL SEARCH RESULT */
+
 .search-result {
   display: flex;
+  justify-content: start;
   border-bottom: solid 2px #E5E7EB;
-  padding: 2em 0;
+  padding: 2em 2%;
   gap: 1.5em;
   pointer-events: all;
+  width: 100%;
 }
 
 .search-result--poster {
@@ -242,6 +278,18 @@ header > .content-fit-width {
   border-bottom: none;
 }
 
+@media(max-width: 550px) {
+
+  .search-result--poster {
+    width: 86px;
+    height: 129px;
+  }
+
+  .search-result--movie-details-mid-row {
+    gap: 0.5em;
+  }
+}
+
 
 /* WATCHLIST */
 
@@ -267,4 +315,5 @@ header > .content-fit-width {
 
 .content-fit-width {
   width: 84%;
+  max-width: 1000px;
 }
