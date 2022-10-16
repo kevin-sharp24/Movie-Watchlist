@@ -19,7 +19,7 @@ export default function SearchPage({handleWatchlistBtnClick, setPage}) {
 
     const isSearchPageEmpty = !searchResultsElems.length
     const stylesEmpty = {
-        height: "calc(100% - 30vw - 1.1875rem)",
+        height: window.matchMedia("(max-width: 1000px)").matches ? "calc(100% - 30vw - 1.1875rem)" : "100%",
         bottom: "45%",
         transform: "translateY(40%)"
     }
