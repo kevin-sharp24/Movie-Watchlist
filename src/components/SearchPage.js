@@ -4,6 +4,7 @@ import SearchResult from "./SearchResult"
 import FilmReelIcon from "../images/film-reel-icon.png"
 
 export default function SearchPage({handleWatchlistBtnClick, setPage}) {
+    
     const baseURL = "https://www.omdbapi.com/?apikey=ff7ef8c4&"
     const [search, setSearch] = useState("")
     const [searchClicked, setSearchClicked] = useState(false)

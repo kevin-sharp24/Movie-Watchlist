@@ -14,9 +14,6 @@ export default function WatchlistPage({setPage, watchlistElems}) {
 
     const isWatchlistEmpty = watchlistElems.length === 0
 
-    console.log("watchlist page rendered")
-    console.log(watchlistElems)
-
     return (
         <main 
             id="watchlist-page"

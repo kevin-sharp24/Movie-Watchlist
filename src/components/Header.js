@@ -6,7 +6,7 @@ export default function Header({onSearchPage}) {
     return (
         <header>
             <div className="content-fit-width">
-                <h1>Find your film</h1>
+                <h1>{onSearchPage ? "Find your film" : "My Watchlist"}</h1>
                 <Link 
                     id="header--nav-link" 
                     to={onSearchPage ? "/watchlist" : "/"}

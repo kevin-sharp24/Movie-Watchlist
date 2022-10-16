@@ -12,6 +12,7 @@ export default function SearchResult({movieDetails, handleClick, onSearchPage}) 
                 <div className="search-result--movie-details-top-row">
                     <h2 className="search-result--title">{movieDetails.Title}</h2>
                     <img className="star-icon" src={StarIcon} alt="star rating out of ten"/>
+                    {/* substring truncates "/10" from the value of the movie's rating */}
                     <p className="search-result--rating">{movieDetails.Ratings[0] ? movieDetails.Ratings[0].Value.substring(0, 3) : ""}</p>
                 </div>
                 <div className="search-result--movie-details-mid-row">
