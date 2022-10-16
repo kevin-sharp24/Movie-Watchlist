@@ -32,7 +32,7 @@ export default function App() {
                         onSearchPage={false}
                         handleClick={removeItemFromWatchlist}
                         key={key}
-                        {...watchlistObj[key]}
+                        movieDetails={{...watchlistObj[key]}}
                     />
                 )
             }
@@ -40,21 +40,19 @@ export default function App() {
         })
     }, [watchlist])
 
-    console.log("app rendered")
-
     function setPage(newValue) {
         setOnSearchPage(newValue)
     }
 
     function addItemToWatchlist(item) {
         setWatchlist(prevWatchlist => {
-            return {...prevWatchlist, [item.id]: item}
+            return {...prevWatchlist, [item.key]: item}
         })
     }
 
     function removeItemFromWatchlist(item) {      
         setWatchlist(prevWatchlist => {
-            delete prevWatchlist[item.id]            
+            delete prevWatchlist[item.key]            
             const newWatchlist = {...prevWatchlist}
             localStorage.setItem("myWatchlist", JSON.stringify(newWatchlist))
             return newWatchlist

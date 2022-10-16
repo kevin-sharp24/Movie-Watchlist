@@ -37,6 +37,12 @@ h1 {
   text-decoration: none;
 }
 
+#search-bar .font-style {
+  font-weight: 500;
+  font-size: 0.875rem;
+  font-family: inherit;
+}
+
 #watchlist-page--search-page-cta {
   color: black;
   font-size: 1.125rem;
@@ -194,12 +200,6 @@ header > .content-fit-width {
 #search-bar .border:focus {
   outline: none;
   border: 1px solid #A29994 !important;
-}
-
-#search-bar .font-style {
-  font-weight: 500;
-  font-size: 0.875rem;
-  font-family: inherit;
 }
 
 

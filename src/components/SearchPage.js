@@ -12,7 +12,7 @@ export default function SearchPage({handleWatchlistBtnClick, setPage}) {
         <SearchResult
             handleClick={handleWatchlistBtnClick}
             id={movie.key}
-            {...movie}
+            movieDetails={{...movie}}
             onSearchPage={true}
         />
     ))
