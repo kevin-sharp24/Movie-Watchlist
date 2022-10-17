@@ -1,9 +1,10 @@
 import React from "react"
 import PlusIcon from "../images/plus-icon.png"
+import PlusIconDisabled from "../images/plus-icon-disabled.png"
 import MinusIcon from "../images/minus-icon.png"
 import StarIcon from "../images/star-icon.png"
 
-export default function SearchResult({movieDetails, handleClick, onSearchPage}) {
+export default function SearchResult({movieDetails, handleClick, onSearchPage, isOnWatchlist}) {
 
     return (
         <article className="search-result">
@@ -19,11 +20,13 @@ export default function SearchResult({movieDetails, handleClick, onSearchPage}) 
                     <p className="search-result--runtime">{movieDetails.Runtime}</p>
                     <p className="search-result--genre">{movieDetails.Genre}</p>
                     { onSearchPage ? 
-                        <div className="btn-add-or-remove-item" onClick={() => handleClick(movieDetails)}>
-                            <img src={PlusIcon} alt="click to add this movie to your watchlist"/>
-                            <p>Watchlist</p>
+                        // search page variant
+                        <div className={!isOnWatchlist ? "watchlist-btn btn-enabled" : "watchlist-btn"} onClick={!isOnWatchlist ? () => handleClick(movieDetails) : null}>
+                            <img src={!isOnWatchlist ? PlusIcon : PlusIconDisabled} alt={!isOnWatchlist ? "click to add this movie to your watchlist" : ""}/>
+                            <p>{!isOnWatchlist ? "Watchlist" : "Added"}</p>
                         </div> :
-                        <div className="btn-add-or-remove-item" onClick={() => handleClick(movieDetails)}>
+                        // watchlist variant
+                        <div className="watchlist-btn btn-enabled" onClick={() => handleClick(movieDetails)}>
                             <img src={MinusIcon} alt="click to remove this movie from your watchlist"/>
                             <p>Remove</p>
                         </div>

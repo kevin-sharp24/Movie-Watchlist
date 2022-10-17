@@ -261,16 +261,19 @@ header > .content-fit-width {
   margin-bottom: 0.5em;    
 }
 
-.btn-add-or-remove-item {
+.watchlist-btn {
   display: flex;
   align-items: center;
   gap: 0.4em;
-  cursor: pointer;
   padding: 0.5em 1em;
   border-radius: 4px;
 }
 
-.btn-add-or-remove-item:hover {
+.btn-enabled {
+cursor: pointer;
+}
+
+.btn-enabled:hover {
   background-color: #E5E7EB;
 }
 

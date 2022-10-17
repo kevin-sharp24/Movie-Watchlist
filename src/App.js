@@ -12,7 +12,7 @@ import SearchResult from "./components/SearchResult"
 
 
 export default function App() {
-    
+
     const [onSearchPage, setOnSearchPage] = useState(true)
     const [watchlist, setWatchlist] = useState(
         localStorage.getItem("myWatchlist") ? 
@@ -71,6 +71,7 @@ export default function App() {
                             <SearchPage
                                 setPage={() => setPage(true)}
                                 handleWatchlistBtnClick={addItemToWatchlist}
+                                watchlist={watchlist}
                             />
                         }
                     />

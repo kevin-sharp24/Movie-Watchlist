@@ -3,8 +3,8 @@ import SearchBar from "./SearchBar"
 import SearchResult from "./SearchResult"
 import FilmReelIcon from "../images/film-reel-icon.png"
 
-export default function SearchPage({handleWatchlistBtnClick, setPage}) {
-    
+export default function SearchPage({watchlist, handleWatchlistBtnClick, setPage}) {
+
     const baseURL = "https://www.omdbapi.com/?apikey=ff7ef8c4&"
     const [search, setSearch] = useState("")
     const [searchClicked, setSearchClicked] = useState(false)
@@ -15,6 +15,7 @@ export default function SearchPage({handleWatchlistBtnClick, setPage}) {
             id={movie.key}
             movieDetails={{...movie}}
             onSearchPage={true}
+            isOnWatchlist={Object.keys(watchlist).includes(movie.key)}
         />
     ))
 
