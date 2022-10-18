@@ -96,7 +96,7 @@ h1 {
   }
 
   .search-result--movie-details-mid-row {
-    font-size: 0.65rem;
+    font-size: 0.rem;
   }
 
   .search-result--summary {
@@ -257,8 +257,12 @@ header > .content-fit-width {
 .search-result--movie-details-mid-row {
   display: flex;
   align-items: center;
-  gap: 2em;
+  gap: 1.25rem;
   margin-bottom: 0.5em;    
+}
+
+.search-result--runtime {
+  flex-shrink: 0;
 }
 
 .watchlist-btn {
@@ -289,7 +293,7 @@ cursor: pointer;
   }
 
   .search-result--movie-details-mid-row {
-    gap: 0.5em;
+    justify-content: space-evenly;
   }
 }
 
