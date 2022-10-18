@@ -10,7 +10,6 @@ import SearchPage from "./components/SearchPage"
 import WatchlistPage from "./components/WatchlistPage"
 import SearchResult from "./components/SearchResult"
 
-
 export default function App() {
 
     const [onSearchPage, setOnSearchPage] = useState(true)
@@ -21,6 +20,9 @@ export default function App() {
     )
     const [watchlistElems, setWatchlistElems] = useState([])
 
+    // update watchlistElems state everytime watchlist state value changes
+    // these states are held seperately because holding JSX in local storage doesn't make much sense,
+    // but we need the JSX for the watchlist elems held in state so the watchlist can update in response to user actions
     useEffect(() => {
         localStorage.setItem("myWatchlist", JSON.stringify(watchlist))
         setWatchlistElems(() => {
@@ -41,6 +43,7 @@ export default function App() {
         })
     }, [watchlist])
 
+    // page held in state so that header component can respond dynamically
     function setPage(newValue) {
         setOnSearchPage(newValue)
     }
@@ -53,7 +56,10 @@ export default function App() {
 
     function removeItemFromWatchlist(item) {      
         setWatchlist(prevWatchlist => {
-            delete prevWatchlist[item.key]            
+            delete prevWatchlist[item.key]
+            // simply deleting a key from an object maintains the object's old reference
+
+            // creating a new reference to the value is required here in order to get React to detect a change in state         
             const newWatchlist = {...prevWatchlist}
             localStorage.setItem("myWatchlist", JSON.stringify(newWatchlist))
             return newWatchlist

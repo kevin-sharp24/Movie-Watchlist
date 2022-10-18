@@ -21,6 +21,7 @@ export default function SearchPage({watchlist, handleWatchlistBtnClick, setPage}
 
     const isSearchPageEmpty = !searchResultsElems.length
     const stylesEmpty = {
+        // header height is set by screen width until width=1000px; screen height is set proportionately 
         height: window.matchMedia("(max-width: 1000px)").matches ? "calc(100% - 30vw - 1.1875rem)" : "100%",
         bottom: "45%",
         transform: "translateY(40%)"
@@ -73,6 +74,8 @@ export default function SearchPage({watchlist, handleWatchlistBtnClick, setPage}
             <main
                 id="search-page"
                 className="flex-center content-fit-width"
+                // if the search page has search results, setting a height value may cause the results to overflow the top of container
+                // and crowd the header instead of extending the container downward like we want
                 style={isSearchPageEmpty ? stylesEmpty : stylesNotEmpty}
             >
                 {!isSearchPageEmpty ? 

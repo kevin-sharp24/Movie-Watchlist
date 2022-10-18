@@ -9,6 +9,7 @@ export default function WatchlistPage({setPage, watchlistElems}) {
     }, [setPage])
 
     const styles = {
+        // header height is set by screen width until width=1000px; screen height is set proportionately 
         height: window.matchMedia("(max-width: 1000px)").matches ? "calc(100% - 30vw)" : "calc(100% - 300px)"
     }
 
@@ -18,6 +19,8 @@ export default function WatchlistPage({setPage, watchlistElems}) {
         <main 
             id="watchlist-page"
             className="flex-center content-fit-width"
+            // if the watchlist has items, setting a height value may cause the items to overflow the top of container
+            // and crowd the header instead of extending the container downward like we want
             style={isWatchlistEmpty ? styles : {}}
         >
             {!isWatchlistEmpty ?
